@@ -35,7 +35,7 @@ app.get("/math_service", (req,res) => {
 
 app.get("/getRate", (req, res) => {
 
-  res.render("prove09-result", calculateRate(req.query.mailtype, req.query.weight
+  res.render("prove09-result", calculateRate(req.query.mailtype, req.query.weight));
 });
 
 app.listen(PORT, function(){console.log("the server is up");});
