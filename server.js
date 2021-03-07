@@ -34,14 +34,19 @@ app.get("/math_service", (req,res) => {
 });
 
 app.get("/getRate", (req, res) => {
-  var mailtype = req.query.mailtype;
-  var weight = req.query.weight;
+
+  res.render("prove09-result", calculateRate(req.query.mailtype, req.query.weight
+});
+
+app.listen(PORT, function(){console.log("the server is up");});
+
+
+function calculateRate(mailtype, weight)
+{
   var prices = require("./public/prices.json");
   var price = prices[mailtype][weight];
   var types = require("./public/mailtype.json");
   var type = types[mailtype];
   var params = {weight:weight, type:type, price:price};
-  res.render("prove09-result", params);
-});
-
-app.listen(PORT, function(){console.log("the server is up");});
+  return params;
+}
